@@ -52,7 +52,7 @@ if [[ $d -eq 1 ]]; then
   aws cloudformation deploy \
     --no-fail-on-empty-changeset \
     --template-file $PACKAGED_TEMPLATE \
-    --stack-name husky-shelter-stack \
+    --stack-name codebuild-test-stack \
     --capabilities CAPABILITY_NAMED_IAM
 fi
 
