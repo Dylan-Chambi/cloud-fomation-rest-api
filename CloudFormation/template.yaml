@@ -27,5 +27,8 @@ Resources:
             RestApiId: !Ref CodeBuildAPI
             Path: "/test"
             Method: GET
-
+Outputs:
+  ProdDataEndpoint:
+    Description: "API /test Endpoint for the CodeBuild API"
+    Value: !Sub "https://${CodeBuildAPI}.execute-api.${AWS::Region}.amazonaws.com/build/test"
 
