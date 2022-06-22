@@ -4,6 +4,7 @@ phases:
   install:
     commands:
       - echo Installing dependencies
+      - sudo su
       - cd ./CloudFormation
       - ./deploy.sh -i
   build:
