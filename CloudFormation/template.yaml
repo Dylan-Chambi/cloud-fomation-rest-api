@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  CodeBuildAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: build
+      Name: codebuild-api
+      DefinitionBody:
+        'Fn::Transform':
+          Name: 'AWS::Include'
+          Parameters:
+            Location: swaggerFile.yaml
+      
+  UpdateItem:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: codebuild-function
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      CodeUri: build
+      Events:
+        UpdateItem:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CodeBuildAPI
+            Path: "/test"
+            Method: GET
+      Policies:
+        - DynamoDBWritePolicy: 
+            TableName: !Ref Table
+
+
