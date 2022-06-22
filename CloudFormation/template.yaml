@@ -13,7 +13,7 @@ Resources:
           Parameters:
             Location: swaggerFile.yaml
       
-  UpdateItem:
+  CodeBuildLambda:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: codebuild-function
@@ -27,8 +27,5 @@ Resources:
             RestApiId: !Ref CodeBuildAPI
             Path: "/test"
             Method: GET
-      Policies:
-        - DynamoDBWritePolicy: 
-            TableName: !Ref Table
 
 

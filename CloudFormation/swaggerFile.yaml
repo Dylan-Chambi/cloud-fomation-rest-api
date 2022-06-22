@@ -6,7 +6,7 @@ paths:
       summary: this endpoint is for testing codebuild
       x-amazon-apigateway-integration:
         uri:
-          Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${UpdateItem.Arn}/invocations
+          Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${CodeBuildLambda.Arn}/invocations
         passthroughBehavior: "when_no_match"
         httpMethod: "POST" #never changes
         contentHandling: "CONVERT_TO_TEXT"
