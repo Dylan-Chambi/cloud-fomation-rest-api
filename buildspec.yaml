@@ -4,6 +4,7 @@ phases:
   install:
     commands:
       - echo Installing dependencies
+      - chmod +x ./deploy.sh
       - cd ./CloudFormation
       - ./deploy.sh -i
   build:
